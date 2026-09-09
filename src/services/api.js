@@ -198,7 +198,7 @@ return dados.usuarios;
 //  🤔 Pergunta pra pensar: por que o card do mural mudou, se você só mexeu
 //     no formulário? (Resposta: o componente pai recarregou a lista.)
 //
-export async function listarUsuarios(token) {
+export async function editarUsuarios(token) {
 const resposta = await fetch(`${API_URL}/api/usuarios/editar`, {
   method: "PUT",
 headers: { Authorization: `Bearer ${token}` },
