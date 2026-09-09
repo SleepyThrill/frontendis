@@ -207,7 +207,9 @@ const resposta = await fetch(`${API_URL}/api/usuarios/editar`, {
   body: JSON.stringify({ nome, email }),
 });
 const dados = await resposta.json();
-console.log("Dados:", dados);
+  if (!resposta.ok) {
+throw new Error(dados.mensagem || "Não foi possível salvar.");
+}
 return dados;
 }
 
