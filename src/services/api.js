@@ -158,7 +158,6 @@ export async function cadastrar(nome, email, senha) {
 //
 export async function listarUsuarios(token) {
 const resposta = await fetch(`${API_URL}/api/usuarios`, {
-  method: "POST",
 headers: { Authorization: `Bearer ${token}` },
 });
 const dados = await resposta.json();
@@ -201,6 +200,7 @@ return dados.usuarios;
 //
 export async function listarUsuarios(token) {
 const resposta = await fetch(`${API_URL}/api/usuarios/editar`, {
+  method: "PUT",
 headers: { Authorization: `Bearer ${token}` },
 });
 const dados = await resposta.json();
