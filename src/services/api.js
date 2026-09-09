@@ -198,16 +198,17 @@ return dados.usuarios;
 //  🤔 Pergunta pra pensar: por que o card do mural mudou, se você só mexeu
 //     no formulário? (Resposta: o componente pai recarregou a lista.)
 //
-export async function editarUsuarios(token) {
+export async function editarPerfil(token, nome, email) {
 const resposta = await fetch(`${API_URL}/api/usuarios/editar`, {
   method: "PUT",
-headers: { Authorization: `Bearer ${token}` },
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}` },
+  body: JSON.stringify({ nome, email }),
 });
 const dados = await resposta.json();
-if (!resposta.ok) {
-throw new Error(dados.mensagem || "Não foi possível carregar a lista.");
-}
-return dados.usuarios;
+console.log("Dados:", dados);
+return dados;
 }
 
 // ╔═════════════════════════════════════════════════════════════════════╗
